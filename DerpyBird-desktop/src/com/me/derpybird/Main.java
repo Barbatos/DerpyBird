@@ -8,8 +8,8 @@ public class Main {
 	public static void main(String[] args) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "DerpyBird";
-		cfg.width = 480;
-		cfg.height = 320;
+		cfg.width = 272;
+		cfg.height = 408;
 		
 		new LwjglApplication(new DerpyGame(), cfg);
 	}

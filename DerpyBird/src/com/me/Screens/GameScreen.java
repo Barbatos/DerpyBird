@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.me.GameRenderer.GameRenderer;
 import com.me.GameWorld.GameWorld;
+import com.me.Helpers.InputHandler;
 
 public class GameScreen implements Screen {
     
@@ -12,8 +13,23 @@ public class GameScreen implements Screen {
 	private GameRenderer renderer;
 	
     public GameScreen() {
-    	world = new GameWorld(); 
+    	float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
+        
+        // We set a fixed width for the game, so the height
+        // will be different depending on the device we use.
+        // We need to calculate it.
+        float gameWidth = 136;
+        float gameHeight = screenHeight / (screenWidth / gameWidth);
+        
+        // Find the middle point of the screen height.
+        int midPointY = (int) (gameHeight / 2);
+        
+    	world = new GameWorld(midPointY); 
     	renderer = new GameRenderer(world); 
+    	
+    	Gdx.input.setInputProcessor(new InputHandler(world.getBird()));
+    	
         System.out.println("GameScreen Attached");
     }
 
