@@ -1,6 +1,6 @@
 package com.me.derpybird.client;
 
-import com.me.derpybird.DerpyGame;
+import com.me.DerpyBird.DerpyGame;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;

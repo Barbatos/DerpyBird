@@ -15,6 +15,7 @@ public class GameScreen implements Screen {
         // Draws the RGB color 10, 15, 230, at 100% opacity
         Gdx.gl.glClearColor(10/255.0f, 15/255.0f, 230/255.0f, 1f);
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        System.out.println("fps: "+1/delta);
     }
 
     @Override

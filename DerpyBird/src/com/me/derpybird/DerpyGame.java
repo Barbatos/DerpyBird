@@ -1,4 +1,4 @@
-package com.me.derpybird;
+package com.me.DerpyBird;
 
 import com.badlogic.gdx.Game;
 import com.me.Screens.GameScreen;
