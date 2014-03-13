@@ -3,19 +3,24 @@ package com.me.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
+import com.me.GameRenderer.GameRenderer;
+import com.me.GameWorld.GameWorld;
 
 public class GameScreen implements Screen {
     
+	private GameWorld world;
+	private GameRenderer renderer;
+	
     public GameScreen() {
+    	world = new GameWorld(); 
+    	renderer = new GameRenderer(world); 
         System.out.println("GameScreen Attached");
     }
 
     @Override
     public void render(float delta) {
-        // Draws the RGB color 10, 15, 230, at 100% opacity
-        Gdx.gl.glClearColor(10/255.0f, 15/255.0f, 230/255.0f, 1f);
-        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        System.out.println("fps: "+1/delta);
+    	world.update(delta);
+        renderer.render();
     }
 
     @Override
