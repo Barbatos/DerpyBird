@@ -11,6 +11,8 @@ public class Bird {
 	private int width;
 	private int height;
 	
+	private boolean moving;
+	
 	 public Bird(float x, float y, int width, int height) {
         this.width = width;
         this.height = height;
@@ -33,8 +35,8 @@ public class Bird {
         if (velocity.y < 0) {
             rotation -= 600 * delta;
 
-            if (rotation < -20) {
-                rotation = -20;
+            if (rotation < -90) {
+                rotation = -90;
             }
         }
 
@@ -50,6 +52,7 @@ public class Bird {
 
     public void onClick() {
         velocity.y = -140;
+        moving = true;
     }
     
     public boolean isFalling() {
@@ -78,5 +81,14 @@ public class Bird {
 
     public float getRotation() {
         return rotation;
+    }
+    
+    public void setY(float _y) {
+    	position.y = _y;
+    	moving = false;
+    }
+    
+    public boolean isMoving() {
+    	return moving;
     }
 }

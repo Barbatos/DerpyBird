@@ -159,11 +159,6 @@ public class GameRenderer {
         // The bird needs transparency, so we enable that again.
         batch.enableBlending();
         
-        // Draw bird at its coordinates. Retrieve the Animation object from AssetsLoader
-        // Pass in the runTime variable to get the current frame.
-        batch.draw(this.birdAnimation.getKeyFrame(runTime),
-                bird.getX(), bird.getY(), bird.getWidth(), bird.getHeight());
-        
         // 1. Draw Grass
         drawGrass();
 
@@ -174,6 +169,12 @@ public class GameRenderer {
         // 3. Draw Skulls (requires transparency)
         drawSkulls();
 
+        if(bird.isMoving()) {
+        	// Draw bird at its coordinates. Retrieve the Animation object from AssetsLoader
+            // Pass in the runTime variable to get the current frame.
+            batch.draw(this.birdAnimation.getKeyFrame(runTime),
+                    bird.getX(), bird.getY(), bird.getWidth(), bird.getHeight());
+        }
         
         if (bird.shouldNotFlap()) {
             batch.draw(this.birdMid, bird.getX(), bird.getY(),
