@@ -26,6 +26,10 @@ public class GameWorld {
         if(bird.getY() > floorLevel) {
         	bird.setY(floorLevel);
         }
+        
+        if(scroller.collides(bird)) {
+        	scroller.stop();
+        }
     }
 	
 	public Bird getBird() {
