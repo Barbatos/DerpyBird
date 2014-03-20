@@ -6,14 +6,22 @@ import com.me.GameObjects.Bird;
 public class InputHandler implements InputProcessor {
 	
 	private Bird bird;
+	private boolean stopped;
 	
 	public InputHandler(Bird _bird) {
 		this.bird = _bird;
+		this.stopped = false;
+	}
+	
+	public void stop() {
+		this.stopped = true;
 	}
 	
 	@Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		bird.onClick();
+		if(!stopped) {
+			bird.onClick();
+		}
         return false;
     }
 

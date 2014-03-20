@@ -11,6 +11,7 @@ public class GameScreen implements Screen {
     
 	private GameWorld world;
 	private GameRenderer renderer;
+	private InputHandler input;
 	private float runTime = 0;
 	
     public GameScreen() {
@@ -28,8 +29,9 @@ public class GameScreen implements Screen {
         
     	world = new GameWorld(midPointY); 
     	renderer = new GameRenderer(world, (int)gameHeight, midPointY); 
+    	input = new InputHandler(world.getBird());
     	
-    	Gdx.input.setInputProcessor(new InputHandler(world.getBird()));
+    	Gdx.input.setInputProcessor(input);
     	
         System.out.println("GameScreen Attached");
     }
@@ -39,6 +41,10 @@ public class GameScreen implements Screen {
     	this.runTime += delta;
     	world.update(delta);
         renderer.render(runTime);
+        
+        if(world.isPaused()) {
+        	input.stop();
+        }
     }
 
     @Override

@@ -11,11 +11,14 @@ public class GameWorld {
 	int midPointY;
 	int floorLevel;
 	
+	private boolean paused;
+	
 	public GameWorld(int midPointY) {
 		bird = new Bird(33, midPointY - 5, 17, 12);
 		scroller = new ScrollHandler(midPointY + 66);
 		this.midPointY = midPointY;
 		this.floorLevel = (this.midPointY * 2) - 15;
+		this.paused = false;
 	}
 	
 	public void update(float delta) {
@@ -27,10 +30,19 @@ public class GameWorld {
         	bird.setY(floorLevel);
         }
         
-        if(scroller.collides(bird)) {
-        	scroller.stop();
+        if(scroller.collides(bird) && !paused) {
+        	pauseGame();
         }
     }
+	
+	public void pauseGame() {
+		scroller.stop();
+		this.paused = true;
+	}
+	
+	public boolean isPaused() {
+		return this.paused;
+	}
 	
 	public Bird getBird() {
 		return bird;
