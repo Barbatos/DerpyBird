@@ -191,5 +191,12 @@ public class GameRenderer {
         
         // End SpriteBatch
         batch.end();
+        
+        CharSequence str = "Hello World!";
+        BitmapFont font = new BitmapFont();
+
+        batch.begin();
+        font.draw(batch, "lolololmdr", 50, 30);
+        batch.end();
     }
 }
