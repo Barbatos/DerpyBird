@@ -26,9 +26,9 @@ public class ScrollHandler {
     	// Update our objects
         frontGrass.update(delta);
         backGrass.update(delta);
-        pipe1.update(delta);
-        pipe2.update(delta);
-        pipe3.update(delta);
+        movingPipe(pipe1, delta);
+        movingPipe(pipe2, delta);
+        movingPipe(pipe3, delta);
 
         // Check if any of the pipes are scrolled left,
         // and reset accordingly
@@ -83,4 +83,20 @@ public class ScrollHandler {
         return pipe3;
     }
 
+    public void movingPipe(Pipe p, float delta){
+        int rand = (int) (Math.random()*30);
+        if (rand == 0){
+            int rand2 = (int) (Math.random()*2);
+            if(rand2 == 0){
+                p.height += 5;              
+            }
+            else{
+                p.height -= 5;              
+            }
+            p.update(delta);    
+        }
+        else{
+            p.update(delta);
+        }
+    }
 }
