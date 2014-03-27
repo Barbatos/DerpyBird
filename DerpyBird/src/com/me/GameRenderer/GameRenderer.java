@@ -193,7 +193,7 @@ public class GameRenderer {
             // Pass in the runTime variable to get the current frame.
             batch.draw(this.birdAnimation.getKeyFrame(runTime),
                     bird.getX(), bird.getY(), bird.getWidth(), bird.getHeight());
-            if(bird.getX() > pipe1.getX()-0.5 && bird.getX() < pipe1.getX()+0.5){  //augmente le score ï¿½ chaque fois
+            if(bird.getX() > pipe1.getX()-0.5 && bird.getX() < pipe1.getX()+0.5){  //augmente le score à chaque fois
             	score += 1;														   //que le joueur passe entre un tuyau
             }
             if(bird.getX() > pipe2.getX()-0.5 && bird.getX() < pipe2.getX()+0.5){
