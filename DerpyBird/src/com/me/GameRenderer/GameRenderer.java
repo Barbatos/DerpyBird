@@ -20,8 +20,10 @@ public class GameRenderer {
 	
 	private GameWorld world;
 	private OrthographicCamera camera;
+	private OrthographicCamera cameraText;
 	private ShapeRenderer shapeRenderer;
 	private SpriteBatch batch;
+	private SpriteBatch batchText;
 	
 	private int midPointY;
     private int gameHeight;
@@ -49,8 +51,14 @@ public class GameRenderer {
         camera = new OrthographicCamera();
         camera.setToOrtho(true, 136, 204);
         
+        cameraText = new OrthographicCamera();
+        cameraText.setToOrtho(false, 136, 204);
+        
         batch = new SpriteBatch();
         batch.setProjectionMatrix(camera.combined);
+        
+        batchText = new SpriteBatch();
+        batchText.setProjectionMatrix(cameraText.combined);
         
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(camera.combined);
@@ -178,7 +186,7 @@ public class GameRenderer {
             // Pass in the runTime variable to get the current frame.
             batch.draw(this.birdAnimation.getKeyFrame(runTime),
                     bird.getX(), bird.getY(), bird.getWidth(), bird.getHeight());
-            if(bird.getX() > pipe1.getX()-0.5 && bird.getX() < pipe1.getX()+0.5){  //augmente le score à chaque fois
+            if(bird.getX() > pipe1.getX()-0.5 && bird.getX() < pipe1.getX()+0.5){  //augmente le score ï¿½ chaque fois
             	score += 1;														   //que le joueur passe entre un tuyau
             }
             if(bird.getX() > pipe2.getX()-0.5 && bird.getX() < pipe2.getX()+0.5){
@@ -208,8 +216,8 @@ public class GameRenderer {
         BitmapFont font = new BitmapFont();
 
         score1 = Integer.toString(score);
-        batch.begin();
-        font.draw(batch, score1, 50, 30);
-        batch.end();
+        batchText.begin();
+        font.draw(batchText, score1, 65, 190);
+        batchText.end();
     }
 }
