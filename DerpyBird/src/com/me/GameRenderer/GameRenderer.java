@@ -28,9 +28,8 @@ public class GameRenderer {
 	private int midPointY;
     private int gameHeight;
     
-    private int score = 1;
-    private String score1;/*
-    private CharSequence score2;*/
+    private int score = 0;
+    private String score1;
     
     private Bird bird;
     private ScrollHandler scroller;

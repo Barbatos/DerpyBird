@@ -32,6 +32,7 @@ public class GameWorld {
         
         if(bird.getY() > floorLevel) {
         	bird.setY(floorLevel);
+        	pauseGame();
         }
         
         if(scroller.collides(bird) && !paused) {
