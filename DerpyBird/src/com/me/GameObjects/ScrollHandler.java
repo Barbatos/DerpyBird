@@ -1,5 +1,7 @@
 package com.me.GameObjects;
 
+import com.me.GameObjects.Pipe;
+
 public class ScrollHandler {
 
     private Grass frontGrass, backGrass;
@@ -9,7 +11,7 @@ public class ScrollHandler {
     // how fast we need to scroll and also determine
     // the size of the gap between each pair of pipes.
 
-    public static final int SCROLL_SPEED = -59;
+    public static final float SCROLL_SPEED = -59;
     public static final int PIPE_GAP = 49;
 
     public ScrollHandler(float yPos) {
@@ -17,9 +19,9 @@ public class ScrollHandler {
         backGrass = new Grass(frontGrass.getTailX(), yPos, 143, 11,
                 SCROLL_SPEED);
 
-        pipe1 = new Pipe(210, 0, 22, 60, SCROLL_SPEED, yPos);
-        pipe2 = new Pipe(pipe1.getTailX() + PIPE_GAP, 0, 22, 70, SCROLL_SPEED, yPos);
-        pipe3 = new Pipe(pipe2.getTailX() + PIPE_GAP, 0, 22, 60, SCROLL_SPEED, yPos);
+        pipe1 = new Pipe((float)210, (float)0, 22, 60, SCROLL_SPEED, yPos);
+        pipe2 = new Pipe((float)(pipe1.getTailX() + PIPE_GAP), 0, 22, 70, SCROLL_SPEED, yPos);
+        pipe3 = new Pipe((float)(pipe2.getTailX() + PIPE_GAP), 0, 22, 60, SCROLL_SPEED, yPos);
     }
     
     public void update(float delta) {

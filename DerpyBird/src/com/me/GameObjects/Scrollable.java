@@ -29,6 +29,7 @@ public class Scrollable {
     
     public void stop() {
         velocity.x = 0;
+        velocity.y = 0;
     }
 
     

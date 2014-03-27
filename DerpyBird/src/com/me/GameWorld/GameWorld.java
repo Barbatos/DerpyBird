@@ -23,8 +23,12 @@ public class GameWorld {
 	
 	public void update(float delta) {
         //System.out.println("fps: "+1/delta);
+		
         bird.update(delta);
-        scroller.update(delta);
+        
+        if(!paused) {
+        	scroller.update(delta);
+        }
         
         if(bird.getY() > floorLevel) {
         	bird.setY(floorLevel);
