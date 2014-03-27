@@ -1,10 +1,12 @@
 package com.me.GameRenderer;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.me.GameObjects.Bird;
@@ -23,6 +25,10 @@ public class GameRenderer {
 	
 	private int midPointY;
     private int gameHeight;
+    
+    private int score = 1;
+    private String score1;/*
+    private CharSequence score2;*/
     
     private Bird bird;
     private ScrollHandler scroller;
@@ -86,8 +92,6 @@ public class GameRenderer {
     }
 
     private void drawSkulls() {
-        // Temporary code! Sorry about the mess :)
-        // We will fix this when we finish the Pipe class.
 
     	batch.draw(skullUp, pipe1.getX() - 1,
                 pipe1.getY() + pipe1.getHeight() - 14, 24, 14);
@@ -106,8 +110,7 @@ public class GameRenderer {
     }
 
     private void drawPipes() {
-        // Temporary code! Sorry about the mess :)
-        // We will fix this when we finish the Pipe class.
+
         batch.draw(bar, pipe1.getX(), pipe1.getY(), pipe1.getWidth(),
                 pipe1.getHeight());
         batch.draw(bar, pipe1.getX(), pipe1.getY() + pipe1.getHeight() + 45,
@@ -175,6 +178,16 @@ public class GameRenderer {
             // Pass in the runTime variable to get the current frame.
             batch.draw(this.birdAnimation.getKeyFrame(runTime),
                     bird.getX(), bird.getY(), bird.getWidth(), bird.getHeight());
+            if(bird.getX() > pipe1.getX()-0.5 && bird.getX() < pipe1.getX()+0.5){  //augmente le score à chaque fois
+            	score += 1;														   //que le joueur passe entre un tuyau
+            }
+            if(bird.getX() > pipe2.getX()-0.5 && bird.getX() < pipe2.getX()+0.5){
+            	score += 1;
+            }
+            if(bird.getX() > pipe3.getX()-0.5 && bird.getX() < pipe3.getX()+0.5){
+            	score += 1;
+            }
+            
         }
         
         if (bird.shouldNotFlap()) {
@@ -192,11 +205,11 @@ public class GameRenderer {
         // End SpriteBatch
         batch.end();
         
-        CharSequence str = "Hello World!";
         BitmapFont font = new BitmapFont();
 
+        score1 = Integer.toString(score);
         batch.begin();
-        font.draw(batch, "lolololmdr", 50, 30);
+        font.draw(batch, score1, 50, 30);
         batch.end();
     }
 }
