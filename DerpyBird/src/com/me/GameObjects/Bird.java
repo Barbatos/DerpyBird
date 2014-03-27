@@ -11,6 +11,7 @@ public class Bird {
 	private float rotation; 
 	private int width;
 	private int height;
+	private int rand=1;
 	
 	private boolean moving;
 	
@@ -57,8 +58,13 @@ public class Bird {
     }
 
     public void onClick() {
-        velocity.y = -140;
+    	
+    	while(rand < 80){
+    	 rand = (int) (Math.random()*180);}
+    	System.out.println(rand);
+        velocity.y = -(rand);
         moving = true;
+        rand = 1;
     }
     
     public boolean isFalling() {
