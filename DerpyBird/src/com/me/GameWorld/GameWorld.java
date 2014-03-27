@@ -17,7 +17,7 @@ public class GameWorld {
 		bird = new Bird(33, midPointY - 5, 17, 12);
 		scroller = new ScrollHandler(midPointY + 66);
 		this.midPointY = midPointY;
-		this.floorLevel = (this.midPointY * 2) - 15;
+		this.floorLevel = (this.midPointY * 2) - 49;
 		this.paused = false;
 	}
 	
