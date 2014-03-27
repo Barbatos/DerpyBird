@@ -41,8 +41,8 @@ public class Bird {
         if (velocity.y < 0) {
             rotation -= 600 * delta;
 
-            if (rotation < -90) {
-                rotation = -90;
+            if (rotation < -40) {
+                rotation = -40;
             }
         }
 

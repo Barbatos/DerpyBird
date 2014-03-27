@@ -25,6 +25,8 @@ public class GameRenderer {
 	private SpriteBatch batch;
 	private SpriteBatch batchText;
 	
+	private BitmapFont font;
+	
 	private int midPointY;
     private int gameHeight;
     
@@ -40,6 +42,9 @@ public class GameRenderer {
     private Animation birdAnimation;
     private TextureRegion birdMid, birdDown, birdUp;
     private TextureRegion skullUp, skullDown, bar;
+    private TextureRegion playButton;
+    
+    private boolean paused;
     
 	public GameRenderer(GameWorld _world, int gameHeight, int midPointY) {
         world = _world;
@@ -61,6 +66,8 @@ public class GameRenderer {
         
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(camera.combined);
+        
+        font = new BitmapFont();
         
         bird = world.getBird();
         
@@ -88,6 +95,7 @@ public class GameRenderer {
         skullUp = AssetsLoader.skullUp;
         skullDown = AssetsLoader.skullDown;
         bar = AssetsLoader.bar;
+        playButton = AssetsLoader.playButton;
 	}
 	
 	private void drawGrass() {
@@ -212,11 +220,27 @@ public class GameRenderer {
         // End SpriteBatch
         batch.end();
         
-        BitmapFont font = new BitmapFont();
-
-        score1 = Integer.toString(score);
-        batchText.begin();
-        font.draw(batchText, score1, 65, 190);
-        batchText.end();
+        // Draw the score
+        if(!paused) {
+	        score1 = Integer.toString(score);
+	        batchText.begin();
+	        font.draw(batchText, score1, 65, 190);
+	        batchText.end();
+        }
+        
+        // Draw the "try again" text
+        else {
+        	batchText.begin();
+	        font.draw(batchText, "Score: "+score1, 40, 120);
+	        batchText.end();
+	        
+	        batch.begin();
+	        batch.draw(this.playButton, 52, 100);
+	        batch.end();
+        }
     }
+	
+	public void setPaused(boolean _paused) {
+		this.paused = _paused;
+	}
 }

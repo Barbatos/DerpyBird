@@ -15,6 +15,8 @@ public class AssetsLoader {
     public static TextureRegion bird, birdDown, birdUp;
 
     public static TextureRegion skullUp, skullDown, bar;
+    
+    public static TextureRegion playButton;
 
     public static void load() {
 
@@ -23,7 +25,10 @@ public class AssetsLoader {
 
         bg = new TextureRegion(texture, 0, 0, 136, 43);
         bg.flip(false, true);
-
+        
+        playButton = new TextureRegion(texture, 0, 83, 29, 16);
+        playButton.flip(false, true);
+        
         grass = new TextureRegion(texture, 0, 43, 143, 11);
         grass.flip(false, true);
 
